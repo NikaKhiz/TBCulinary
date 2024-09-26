@@ -1,10 +1,4 @@
-from database_generator import DatabaseGenerator
-
-
-def mng_queries(db_name):
-    db_conn = DatabaseGenerator(db_name, collection='recipe_collection')
-    collection = db_conn.collection
-
+def mng_queries(collection):
     pipelines = {
         "average_ingredients": [
             {"$project": {"ingredients_count": {"$size": "$ingredients"}}},
@@ -49,7 +43,3 @@ def print_results(key, result):
     elif key == "auth_with_most_recipes":
         print(
             f"The winner is: {result[0]['_id']} with {result[0]['recipe_count']} recipes")
-
-
-if __name__ == '__main__':
-    mng_queries(db_name="saladsdatabase")
