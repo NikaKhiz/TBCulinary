@@ -1,6 +1,12 @@
+from database_generator import DatabaseGenerator
+
+CLIENT = 'mongodb://localhost:27017/'
+DB = 'saladsdatabase'
+COLLECTION = 'recipe_collection'
 
 def main():
-    print('TBCCulinary')
+    database_manager = DatabaseGenerator(client=CLIENT, database=DB, collection=COLLECTION)
+    
 
 
 
