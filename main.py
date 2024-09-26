@@ -5,8 +5,7 @@ DB = 'saladsdatabase'
 COLLECTION = 'recipe_collection'
 
 def main():
-    database_manager = DatabaseGenerator(client=CLIENT, database=DB, collection=COLLECTION)
-    
+    database_generator = DatabaseGenerator(client=CLIENT, database=DB, collection_name=COLLECTION)
 
 
 
