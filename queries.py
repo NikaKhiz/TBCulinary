@@ -35,4 +35,3 @@ def mng_queries(db_name):
                 result_auth_with_most_recipes[0]['recipe_count']} რეცეპტით")
 
     return result_avg, result_avg_steps, result_avg_steps, result_most_servings, result_auth_with_most_recipes
-

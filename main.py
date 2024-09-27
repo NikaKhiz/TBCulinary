@@ -1,15 +1,21 @@
+import asyncio
 from database_generator import DatabaseGenerator
+from scraper import Scrapper
 
 CLIENT = 'mongodb://localhost:27017/'
 DB = 'saladsdatabase'
 COLLECTION = 'recipe_collection'
 
-def main():
-    database_manager = DatabaseGenerator(client=CLIENT, database=DB, collection=COLLECTION)
-    
+async def main():
+    database = DatabaseGenerator(client=CLIENT, database=DB, collection_name=COLLECTION)
+    scrapper = Scrapper()
 
+    await scrapper.fetch_recipe_urls()
+    await scrapper.fetch_salad_recipes()
+    database.insert_recipes(scrapper._salads)
+
+    await scrapper.close_conn()
 
 
 if __name__ == '__main__':
-    main()
-
+    asyncio.run(main())

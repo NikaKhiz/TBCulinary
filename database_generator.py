@@ -1,13 +1,14 @@
 
 import pymongo
+from pymongo.errors import CollectionInvalid
+from schemas import recipe_schema
 
 
 class DatabaseGenerator():
-    def __init__(self, client='mongodb://localhost:27017/', database='saladsdatabase', collection='recipe_collection') -> None:
+    def __init__(self, client='mongodb://localhost:27017/', database='saladsdatabase', collection_name='recipe_collection') -> None:
         self.client = client
         self.database = database
-        self.collection = collection
-        pass
+        self.collection = collection_name
 
 
     @property
@@ -33,6 +34,15 @@ class DatabaseGenerator():
         return self._collection
     
     @collection.setter
-    def collection(self, collection):
-        self._collection = self._database[collection] 
+    def collection(self, collection_name):
+        try:
+            self._collection = self._database.create_collection(collection_name, validator = recipe_schema)
+        except CollectionInvalid:
+            self._collection = self._database[collection_name]
 
+
+    def insert_recipes(self, recipes):
+        try:
+            self.collection.insert_many(recipes)
+        except Exception as e:
+            print(e)
