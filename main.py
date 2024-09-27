@@ -1,5 +1,6 @@
 import asyncio
 from database_generator import DatabaseGenerator
+from queries import mng_queries
 from scraper import Scrapper
 
 CLIENT = 'mongodb://localhost:27017/'
