@@ -1,8 +1,24 @@
 # TBC Culinary
 
-A Python project to scrape recipes from kulinaria.ge, extract data, and store it in MongoDB
+<p>A Python project that scrapes recipes from kulinaria.ge, extracts data, and stores it in MongoDB.</p>
+<p>After scraping and storing recipes in MongoDB, the following statistics are displayed to users :</p>
 
-## Features
+1. **Average number of ingredients**
+2. **Average number of preparation steps per recipe**
+3. **Recipe with the most portions(prints its name and url)**
+4. **Author with the most recipes**
+
+
+### Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+
+#
+
+### Features
 
 - Asynchronously scrapes recipe details including:
   - Recipe name
@@ -15,18 +31,28 @@ A Python project to scrape recipes from kulinaria.ge, extract data, and store it
   - Ingredients list
   - Preparation steps
 - Automatically stores data in MongoDB for further analysis.
+- Run queries and display results to the users.
 
-## Requirements
+#
 
-- Python 3.x
+### Prerequisites
+
+- <img src="readme/assets/python.png" width="25" style="position: relative; top: 8px" /> _Python @3.X and up_
+
 - MongoDB (installed locally or using a cloud service like [MongoDB Atlas](https://www.mongodb.com/cloud/atlas))
+
 - Libraries:
   - `aiohttp` (for making asynchronous web requests)
   - `beautifulsoup4` (for parsing HTML)
   - `pymongo` (for interacting with MongoDB)
   - `asyncio` (for managing asynchronous operations)
 
-## Installation
+- Other packages that comes with python: Re
+
+
+#
+
+### Getting Started
 
 1. **Clone the repository**:
     ```bash
@@ -37,6 +63,11 @@ A Python project to scrape recipes from kulinaria.ge, extract data, and store it
 2. **Create a virtual environment**:
     ```bash
     python -m venv venv
+    ```
+    or
+
+    ```bash
+    python3 -m venv venv
     ```
 
 3. **Activate the virtual environment**:
@@ -58,19 +89,37 @@ A Python project to scrape recipes from kulinaria.ge, extract data, and store it
     - If you haven’t installed MongoDB locally, either [download and install MongoDB](https://www.mongodb.com/try/download/community) or use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) to create a cloud-based database.
     - Make sure MongoDB is running, or your connection to MongoDB Atlas is properly set up.
 
+
 ## Usage
 
-**Run the scraper**:
-    - Simply run the `main.py` file:
-    ```bash
-    python main.py
-    ```
-    - The scraper will automatically extract recipe data and store it in your MongoDB database.
+**Run scripts**:
+  - Simply run the `main.py` file:
 
-## MongoDB Queries
+  ```bash
+  python main.py
+  ```
+  or
 
-After scraping and storing recipes in MongoDB, the following statistics are fetched when you run the project:
-1. **Average number of ingredients**
-2. **Average number of preparation steps per recipe**
-3. **Recipe with the most portions(prints its name and url)**
-4. **Author with the most recipes**
+  ```bash
+  python3 main.py
+  ```
+
+### After that program will scrap the data from kulinaria.ge, save extracted information in db, run queries and display the results in terminal!!!
+
+
+### Project Structure
+
+```bash
+├─── readme
+│   ├─── assets
+- .gitignore
+- database_generator.py
+- main.py
+- queries.py
+- query_strings.py
+- readme.md
+- requirements.txt
+- schemas.txt
+- scraper.txt
+- utils.py
+```
