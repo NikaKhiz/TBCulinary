@@ -12,6 +12,7 @@ async def main():
     collection = database.collection
     scrapper = Scrapper()
 
+    print('Fetching recipes. Please wait for a while...')
     await scrapper.fetch_recipe_urls()
     await scrapper.fetch_salad_recipes()
     
