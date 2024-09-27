@@ -7,12 +7,13 @@ DB = 'saladsdatabase'
 COLLECTION = 'recipe_collection'
 
 async def main():
-    database_generator = DatabaseGenerator(client=CLIENT, database=DB, collection_name=COLLECTION)
+    database = DatabaseGenerator(client=CLIENT, database=DB, collection_name=COLLECTION)
     scrapper = Scrapper()
 
     await scrapper.fetch_recipe_urls()
     await scrapper.fetch_salad_recipes()
-    print(scrapper._salads)
+    database.insert_recipes(scrapper._salads)
+
     await scrapper.close_conn()
 
 

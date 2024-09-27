@@ -41,8 +41,8 @@ class DatabaseGenerator():
             self._collection = self._database[collection_name]
 
 
-    def insert_recipe(self, recipe_data):
+    def insert_recipes(self, recipes):
         try:
-            self.collection.insert_one(recipe_data)
+            self.collection.insert_many(recipes)
         except Exception as e:
             print(e)
