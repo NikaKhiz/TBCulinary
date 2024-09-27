@@ -9,6 +9,7 @@ COLLECTION = 'recipe_collection'
 async def main():
     database = DatabaseGenerator(client=CLIENT, database=DB, collection_name=COLLECTION)
     scrapper = Scrapper()
+    queries = mng_queries(DB)
 
     await scrapper.fetch_recipe_urls()
     await scrapper.fetch_salad_recipes()
